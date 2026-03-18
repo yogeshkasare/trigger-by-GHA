@@ -19,5 +19,5 @@ jobs:
           -H "Content-Type: application/json" \
           -H "Authorization: Bearer ${{ secrets.OPSERA_API_TOKEN }}" \
           -d '{
-                "pipelineId": "YOUR_PIPELINE_ID"
+                "pipelineId": "699687d1fb203b763149afb7"
               }'
