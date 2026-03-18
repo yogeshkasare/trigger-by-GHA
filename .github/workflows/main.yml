@@ -1,0 +1,23 @@
+name: Trigger Opsera Pipeline on PR Merge
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+jobs:
+  trigger-opsera:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger Opsera Pipeline
+        run: |
+          curl -X POST "https://app.opsera.io/api/v1/pipeline/run" \
+          -H "Content-Type: application/json" \
+          -H "Authorization: Bearer ${{ secrets.OPSERA_API_TOKEN }}" \
+          -d '{
+                "pipelineId": "YOUR_PIPELINE_ID"
+              }'
